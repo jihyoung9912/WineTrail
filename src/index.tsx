@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import UserProvider from 'context/UserProvider';
+import { UserContextProvider } from 'context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <UserProvider>
+    <UserContextProvider>
       <App />
-    </UserProvider>
+    </UserContextProvider>
   </React.StrictMode>,
 );

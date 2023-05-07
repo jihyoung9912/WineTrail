@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { useSignup } from '../hooks/useSignUp';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const auth = getAuth();
+  const [displayName, setDisplayName] = useState('');
+
+  const { signup } = useSignup();
 
   const SignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      const data = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+    signup({ email, password, displayName });
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +23,9 @@ const SignUp = () => {
     if (name === 'password') {
       setPassword(value);
     }
+    if (name === 'displayName') {
+      setDisplayName(value);
+    }
   };
 
   return (
@@ -37,6 +36,14 @@ const SignUp = () => {
           type="text"
           placeholder="Email"
           value={email}
+          onChange={onChange}
+          required
+        />
+        <input
+          name="displayName"
+          type="text"
+          placeholder="NickName"
+          value={displayName}
           onChange={onChange}
           required
         />
