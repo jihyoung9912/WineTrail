@@ -31,10 +31,14 @@ const ToHomeButton = styled.button`
   text-align: center;
   background-color: #e77853;
   color: #fff;
+  border: none;
   border-radius: 15px;
+  box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.1);
+
   :hover {
-  background-color: #FF7854;
-},
+    background-color: #ff7854;
+    cursor: pointer;
+  }
 `;
 
 const NotFound = () => {
