@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
-import Router from 'components/Router';
+import { auth } from 'FBInstance';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from 'layout/layout';
+import { Home, NotFound, SignIn, SignUp } from 'pages';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser);
 
-  return <Router isLoggedIn={isLoggedIn} />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
