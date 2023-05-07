@@ -16,9 +16,9 @@ const UserContext = createContext(undefined);
 
 const userReducer = (state: any, action: any) => {
   switch (action.type) {
-    case 'login':
+    case 'signin':
       return { ...state, user: action.payload };
-    case 'logout':
+    case 'signout':
       return { ...state, user: null };
     case 'isAuthReady':
       return { ...state, user: action.payload, isAuthReady: true };

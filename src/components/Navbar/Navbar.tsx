@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useUserContext } from 'hooks/useUserContext';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,11 +12,14 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { useWindowSize } from 'hooks/useWindowSize';
-import { styled, alpha } from '@mui/material/styles';
+import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import { useSignOut } from 'hooks/useSignOut';
 
 const Navbar = () => {
+  const { user }: any = useUserContext();
+  const { SignOut }: any = useSignOut();
   const windowSize = useWindowSize();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -113,35 +117,82 @@ const Navbar = () => {
                   설문 게시판
                 </Button>
               </Link>
-              <Link to="/test">
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
-                >
-                  마이페이지
-                </Button>
-              </Link>
-              <Link to="/">
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    display: 'block',
-                    width: '7rem',
-                    textAlign: 'center',
-                    color: '#fff',
-                    backgroundColor: '#E77853',
-                    my: 2,
-                    fontWeight: '700',
-                    borderRadius: '30px',
-                    boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
-                    '&:hover': {
-                      backgroundColor: '#FF7854',
-                    },
-                  }}
-                >
-                  로그아웃
-                </Button>
-              </Link>
+              {!user ? (
+                <>
+                  <Link to="/signin">
+                    <Button
+                      sx={{
+                        display: 'block',
+                        width: '7rem',
+                        textAlign: 'center',
+                        color: '#fff',
+                        backgroundColor: '#E77853',
+                        my: 2,
+                        fontWeight: '700',
+                        borderRadius: '30px',
+                        boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
+                        '&:hover': {
+                          backgroundColor: '#FF7854',
+                        },
+                      }}
+                    >
+                      로그인
+                    </Button>
+                  </Link>
+                  <Link to="/signup">
+                    <Button
+                      sx={{
+                        display: 'block',
+                        width: '7rem',
+                        textAlign: 'center',
+                        color: '#fff',
+                        backgroundColor: '#E77853',
+                        my: 2,
+                        fontWeight: '700',
+                        borderRadius: '30px',
+                        boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
+                        '&:hover': {
+                          backgroundColor: '#FF7854',
+                        },
+                      }}
+                    >
+                      회원가입
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/test">
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
+                    >
+                      마이페이지
+                    </Button>
+                  </Link>
+                  <Link to="/">
+                    <Button
+                      onClick={SignOut}
+                      sx={{
+                        display: 'block',
+                        width: '7rem',
+                        textAlign: 'center',
+                        color: '#fff',
+                        backgroundColor: '#E77853',
+                        my: 2,
+                        fontWeight: '700',
+                        borderRadius: '30px',
+                        boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
+                        '&:hover': {
+                          backgroundColor: '#FF7854',
+                        },
+                      }}
+                    >
+                      로그아웃
+                    </Button>
+                  </Link>
+                </>
+              )}
             </Box>
           </Toolbar>
         ) : (

@@ -4,18 +4,19 @@ import { appUser } from 'firebases/config';
 import { useUserContext } from './useUserContext';
 import { signOut } from 'firebase/auth';
 
-export const useLogout = () => {
+export const useSignOut = () => {
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch }: any = useUserContext();
 
-  const logout = () => {
+  const SignOut = () => {
     setError(null);
     setIsPending(true);
 
     signOut(appUser)
       .then(() => {
-        dispatch({ type: 'logout' });
+        console.log('asd');
+        dispatch({ type: 'signout' });
         setError(null);
         setIsPending(false);
       })
@@ -25,5 +26,5 @@ export const useLogout = () => {
         alert(err.message);
       });
   };
-  return { error, isPending, logout };
+  return { error, isPending, SignOut };
 };
