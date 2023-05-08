@@ -16,6 +16,7 @@ import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSignOut } from 'hooks/useSignOut';
+import { COLORS } from 'constants/COLOR';
 
 const Navbar = () => {
   const { user }: any = useUserContext();
