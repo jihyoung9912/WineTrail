@@ -3,18 +3,17 @@ import { auth } from 'firebases/FBInstance';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from 'layout/layout';
 import { Home, NotFound, SignIn, SignUp } from 'pages';
-
-import { UserContextProvider } from 'context/UserContext';
 import GlobalStyles from 'styles/GlobalStyles';
-import { useUserContext } from './hooks/useUserContext';
+import { useUserContext } from 'hooks/useUserContext';
 
 const App = () => {
+  const { isAuthReady }: any = useUserContext();
   const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser);
 
   return (
     <>
-      <UserContextProvider>
-        <GlobalStyles />
+      <GlobalStyles />
+      {isAuthReady ? (
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
@@ -25,7 +24,9 @@ const App = () => {
             </Route>
           </Routes>
         </BrowserRouter>
-      </UserContextProvider>
+      ) : (
+        'Loading'
+      )}
     </>
   );
 };

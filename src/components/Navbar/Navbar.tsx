@@ -232,7 +232,7 @@ const Navbar = () => {
                   </MenuItem>
                 </Link>
                 {!user ? (
-                  <>
+                  <div>
                     <Link to="/signin">
                       <MenuItem onClick={handleCloseNavMenu}>
                         <Typography textAlign="center">로그인</Typography>
@@ -244,9 +244,9 @@ const Navbar = () => {
                         <Typography textAlign="center">회원가입</Typography>
                       </MenuItem>
                     </Link>
-                  </>
+                  </div>
                 ) : (
-                  <>
+                  <div>
                     <Link to="/test">
                       <MenuItem onClick={handleCloseNavMenu}>
                         <Typography textAlign="center">마이페이지</Typography>
@@ -262,7 +262,7 @@ const Navbar = () => {
                         <Typography textAlign="center">로그아웃</Typography>
                       </MenuItem>
                     </Link>
-                  </>
+                  </div>
                 )}
               </Menu>
             </Box>

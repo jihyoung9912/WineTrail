@@ -48,7 +48,6 @@ export const useSignup = () => {
       .catch((err) => {
         setError(err.message);
         setIsPending(false);
-        console.log('ads');
         enqueueSnackbar('회원가입에 실패하였습니다.', { variant: 'error' });
       });
   };
