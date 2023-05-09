@@ -45,7 +45,7 @@ const Navbar = () => {
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: '30px',
-    border: '2px solid #E77853',
+    border: '2px solid #a4508b',
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -64,7 +64,7 @@ const Navbar = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#E77853',
+    color: '#5f0a87',
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -79,7 +79,7 @@ const Navbar = () => {
         width: '30ch',
         '&:focus': {
           borderRadius: '30px',
-          border: '1px solid #E77853',
+          border: '1px solid #a4508b',
           width: '33ch',
         },
       },
@@ -127,13 +127,13 @@ const Navbar = () => {
                         width: '7rem',
                         textAlign: 'center',
                         color: '#fff',
-                        backgroundColor: '#E77853',
+                        backgroundColor: '#a4508b',
                         my: 2,
                         fontWeight: '700',
                         borderRadius: '30px',
                         boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
                         '&:hover': {
-                          backgroundColor: '#FF7854',
+                          backgroundColor: '#5f0a87',
                         },
                       }}
                     >
@@ -147,13 +147,13 @@ const Navbar = () => {
                         width: '7rem',
                         textAlign: 'center',
                         color: '#fff',
-                        backgroundColor: '#E77853',
+                        backgroundColor: '#a4508b',
                         my: 2,
                         fontWeight: '700',
                         borderRadius: '30px',
                         boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
                         '&:hover': {
-                          backgroundColor: '#FF7854',
+                          backgroundColor: '#5f0a87',
                         },
                       }}
                     >
@@ -249,7 +249,7 @@ const Navbar = () => {
               >
                 <Link to="/">
                   <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">설문 게시판</Typography>
+                    <Typography textAlign="center">테이스팅 게시판</Typography>
                   </MenuItem>
                 </Link>
                 <Link to="/test">

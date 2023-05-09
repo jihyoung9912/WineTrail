@@ -10,8 +10,8 @@ const FooterBox = styled.div`
   width: 100%;
   padding: 1rem 3rem;
   margin-top: 1rem;
-  background-color: ${COLORS.primaryBackground};
-  color: ${COLORS.black};
+  background-color: ${COLORS.primary};
+  color: ${COLORS.fontPrimary};
 `;
 
 const FooterMaxContainer = styled.div`
@@ -26,7 +26,7 @@ const FooterTop = styled.div`
   flex-wrap: wrap;
   width: 100%;
   padding: 1rem;
-  border-bottom: 1px solid ${COLORS.secondaryBackground};
+  border-bottom: 1px solid ${COLORS.secondary};
 `;
 
 const FooterAddress = styled.div`
@@ -49,7 +49,6 @@ const FooterTerms = styled.h1`
   font-weight: 800;
   :hover {
     cursor: pointer;
-    text-decoration: underline;
   }
 `;
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { COLORS } from 'constants/COLOR';
 
 const ErrorContainer = styled.div`
   display: flex;
@@ -10,13 +11,13 @@ const ErrorContainer = styled.div`
 
 const ErrorImg = styled.img`
   margin-top: 10vh;
-  width: 380px;
-  height: 30%;
+  width: 310px;
+  height: 10%;
 `;
 
 const ErrorMsg = styled.div`
   width: 100%;
-  margin: 3rem 0 1rem 0;
+  margin-bottom: 1rem;
   font-size: 26px;
   font-weight: 700;
   text-align: center;
@@ -29,14 +30,14 @@ const ToHomeButton = styled.button`
   font-size: 26px;
   font-weight: 700;
   text-align: center;
-  background-color: #e77853;
-  color: #fff;
+  background-color: ${COLORS.primary};
+  color: ${COLORS.white};
   border: none;
   border-radius: 15px;
   box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.1);
 
   :hover {
-    background-color: #ff7854;
+    background-color: ${COLORS.secondary};
     cursor: pointer;
   }
 `;
@@ -45,7 +46,7 @@ const NotFound = () => {
   return (
     <ErrorContainer>
       <ErrorImg
-        src={`${process.env.PUBLIC_URL}/assets/images/Error-404.png`}
+        src={`${process.env.PUBLIC_URL}/assets/images/Error-404.jpg`}
         alt="404 Not Found Error Imgae"
       />
       <ErrorMsg>페이지를 찾을 수 없습니다.</ErrorMsg>
