@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
+import { marginRight } from 'styled-system';
 
 const FooterBox = styled.div`
   display: flex;
@@ -66,11 +67,11 @@ const Footer = () => {
       <FooterMaxContainer>
         <FooterTop>
           <Link to="/">
-            {/*<img*/}
-            {/*  src={`${process.env.PUBLIC_URL}/assets/images/logo-white.svg`}*/}
-            {/*  alt="IBELEVESURVEY Logo"*/}
-            {/*  style={{ width: '7rem', marginRight: '2rem' }}*/}
-            {/*/>*/}
+            <img
+              src={`${process.env.PUBLIC_URL}/assets/images/champagne-logo.svg`}
+              alt="IBELEVESURVEY Logo"
+              style={{ width: '5rem', height: '5rem', marginRight: '2rem' }}
+            />
           </Link>
           <FooterInfo>
             <Link to="/tos">
