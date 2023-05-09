@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSignup } from 'hooks/useSignUp';
 import styled from 'styled-components';
 import { COLORS } from 'constants/COLOR';
+import Spinner from 'components/Common/Spinner';
 
 const Container = styled.div`
   width: 350px;
@@ -86,7 +87,7 @@ const SignUp = () => {
   return (
     <>
       {isPending ? (
-        'Loading...'
+        <Spinner />
       ) : (
         <Container>
           <form>
