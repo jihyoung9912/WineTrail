@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { COLORS } from '../constants/COLOR';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const auth = getAuth();
-
-  // createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {});
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -25,10 +22,64 @@ const SignIn = () => {
     e.preventDefault();
   };
 
+  const Container = styled.div`
+    width: 350px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px #000;
+    margin-top: 50px;
+  `;
+
+  const SignLabel = styled.label`
+    display: flex;
+    color: ${COLORS.fontPrimary};
+    font-size: 2.3em;
+    justify-content: center;
+    margin: 60px 60px 40px 60px;
+    font-weight: bold;
+    cursor: pointer;
+  `;
+
+  const Input = styled.input`
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 30px;
+    background: ${COLORS.primaryVariant};
+    margin: 20px auto;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+  `;
+
+  const SubmitButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 40px;
+    margin: 20px auto;
+    color: ${COLORS.white};
+    background: ${COLORS.primary};
+    font-size: 1em;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s ease-in;
+    cursor: pointer;
+    :hover {
+      background: ${COLORS.secondary};
+    }
+  `;
+
   return (
-    <div>
+    <Container>
       <form>
-        <input
+        <SignLabel>Wine-Trail</SignLabel>
+        <Input
           name="email"
           type="text"
           placeholder="Email"
@@ -36,7 +87,7 @@ const SignIn = () => {
           onChange={onChange}
           required
         />
-        <input
+        <Input
           name="password"
           type="password"
           placeholder="Password"
@@ -44,16 +95,12 @@ const SignIn = () => {
           onChange={onChange}
           required
         />
-        <input type="submit" onClick={SignIn} value="Sign In" />
-
-        <Link to="/signup">
-          <input type="submit" value="Sign Up" />
-        </Link>
+        <SubmitButton type="submit" onClick={SignIn}>
+          Sign In
+        </SubmitButton>
       </form>
-      <div>
-        <button>Continue with Google</button>
-      </div>
-    </div>
+      <SubmitButton>Continue with Google</SubmitButton>
+    </Container>
   );
 };
 

@@ -1,12 +1,6 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 import { appUser } from 'firebases/config';
 import { onAuthStateChanged } from 'firebase/auth';
-import { User } from './type';
-
-interface IUserState {
-  isAuthReady: boolean;
-  user: User;
-}
 
 interface Props {
   children: React.ReactNode;
@@ -20,7 +14,7 @@ const userReducer = (state: any, action: any) => {
       return { ...state, user: action.payload };
     case 'signout':
       return { ...state, user: null };
-    case 'isAuthReady':
+    case 'authIsReady':
       return { ...state, user: action.payload, isAuthReady: true };
     default:
       return state;
@@ -35,7 +29,7 @@ const UserContextProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     return onAuthStateChanged(appUser, (user) => {
-      dispatch({ type: 'isAuthReady', payload: user });
+      dispatch({ type: 'authIsReady', payload: user });
     });
   }, []);
 
