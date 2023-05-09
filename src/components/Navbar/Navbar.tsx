@@ -115,7 +115,7 @@ const Navbar = () => {
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
                 >
-                  설문 게시판
+                  와인 스토리
                 </Button>
               </Link>
               {!user ? (
@@ -231,19 +231,42 @@ const Navbar = () => {
               >
                 <Link to="/">
                   <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">테이스팅 게시판</Typography>
+                    <Typography textAlign="center">와인 스토리</Typography>
                   </MenuItem>
                 </Link>
-                <Link to="/test">
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">마이페이지</Typography>
-                  </MenuItem>
-                </Link>
-                <Link to="/">
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">123</Typography>
-                  </MenuItem>
-                </Link>
+                {!user ? (
+                  <>
+                    <Link to="/signin">
+                      <MenuItem onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center">로그인</Typography>
+                      </MenuItem>
+                    </Link>
+
+                    <Link to="/signup">
+                      <MenuItem onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center">회원가입</Typography>
+                      </MenuItem>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/test">
+                      <MenuItem onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center">마이페이지</Typography>
+                      </MenuItem>
+                    </Link>
+                    <Link to="/">
+                      <MenuItem
+                        onClick={() => {
+                          handleCloseNavMenu();
+                          SignOut();
+                        }}
+                      >
+                        <Typography textAlign="center">로그아웃</Typography>
+                      </MenuItem>
+                    </Link>
+                  </>
+                )}
               </Menu>
             </Box>
 
