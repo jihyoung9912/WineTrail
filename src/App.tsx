@@ -5,6 +5,7 @@ import Layout from 'layout/layout';
 import { Home, NotFound, SignIn, SignUp } from 'pages';
 import GlobalStyles from 'styles/GlobalStyles';
 import { useUserContext } from 'hooks/useUserContext';
+import Spinner from 'components/Common/Spinner';
 
 const App = () => {
   const { isAuthReady }: any = useUserContext();
@@ -25,7 +26,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       ) : (
-        'Loading'
+        <Spinner />
       )}
     </>
   );
