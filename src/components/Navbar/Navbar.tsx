@@ -16,7 +16,6 @@ import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSignOut } from 'hooks/useSignOut';
-import { COLORS } from 'constants/COLOR';
 
 const Navbar = () => {
   const { user }: any = useUserContext();
@@ -133,7 +132,7 @@ const Navbar = () => {
                         borderRadius: '30px',
                         boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
                         '&:hover': {
-                          backgroundColor: '#5f0a87',
+                          backgroundColor: '#93487D',
                         },
                       }}
                     >
@@ -153,7 +152,7 @@ const Navbar = () => {
                         borderRadius: '30px',
                         boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
                         '&:hover': {
-                          backgroundColor: '#5f0a87',
+                          backgroundColor: '#93487D',
                         },
                       }}
                     >
@@ -179,13 +178,13 @@ const Navbar = () => {
                         width: '7rem',
                         textAlign: 'center',
                         color: '#fff',
-                        backgroundColor: '#E77853',
+                        backgroundColor: '#a4508b',
                         my: 2,
                         fontWeight: '700',
                         borderRadius: '30px',
                         boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
                         '&:hover': {
-                          backgroundColor: '#FF7854',
+                          backgroundColor: '#93487D',
                         },
                       }}
                     >
