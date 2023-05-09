@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { COLORS } from 'constants/COLOR';
 import { useSignIn } from 'hooks/useSignIn';
 import Spinner from 'components/Common/Spinner';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from 'firebases/FBInstance';
+import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 350px;
@@ -61,6 +65,8 @@ const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { isPending, signIn } = useSignIn();
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -71,6 +77,26 @@ const SignIn = () => {
     }
     if (name === 'password') {
       setPassword(value);
+    }
+  };
+
+  const onGoogleClick = async (e: React.MouseEvent<HTMLElement>) => {
+    const { name } = e.target as HTMLButtonElement;
+    let provider;
+    try {
+      if (name === 'google') {
+        provider = new GoogleAuthProvider();
+        await signInWithPopup(auth, provider);
+        enqueueSnackbar(`로그인에 성공하였습니다.`, {
+          variant: 'success',
+        });
+        navigate('/');
+      }
+    } catch (error) {
+      enqueueSnackbar(`로그인에 실패했습니다.`, {
+        variant: 'error',
+      });
+      console.log(error);
     }
   };
 
@@ -107,7 +133,9 @@ const SignIn = () => {
               Sign In
             </SubmitButton>
           </form>
-          <SubmitButton>Continue with Google</SubmitButton>
+          <SubmitButton name="google" onClick={onGoogleClick}>
+            Continue with Google
+          </SubmitButton>
         </Container>
       )}
     </>
