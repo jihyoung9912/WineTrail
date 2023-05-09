@@ -94,9 +94,9 @@ const Navbar = () => {
             {/* PC Logo */}
             <Link to="/">
               <img
-                src={`${process.env.PUBLIC_URL}/assets/images/logo-black.svg`}
-                alt="IBELEVESURVEY Logo"
-                style={{ width: '7rem', marginRight: '2rem' }}
+                src={`${process.env.PUBLIC_URL}/assets/images/red-logo.svg`}
+                alt="WineTrail Logo"
+                style={{ width: '3.8rem', height: '3.8rem', marginRight: '3rem' }}
               />
             </Link>
             {/* PC SearchBar */}
@@ -199,25 +199,6 @@ const Navbar = () => {
           </Toolbar>
         ) : (
           <Toolbar disableGutters>
-            {/* Mobile SearchBar */}
-            <Box sx={{ flexGrow: 1, display: 'flex' }}>
-              <Search sx={{ width: '80%' }}>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
-              </Search>
-            </Box>
-
-            {/* Mobile Logo */}
-            <Link to="/">
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/images/logo-black.svg`}
-                alt="IBELEVESURVEY Logo"
-                style={{ width: '5rem' }}
-              />
-            </Link>
-
             {/* Mobile Hamburger Components */}
             <Box sx={{ flexGrow: 0, display: 'flex', color: '#000' }}>
               <IconButton
@@ -265,6 +246,25 @@ const Navbar = () => {
                 </Link>
               </Menu>
             </Box>
+
+            {/* Mobile SearchBar */}
+            <Box sx={{ flexGrow: 1, display: 'flex', marginLeft: '2rem' }}>
+              <Search sx={{ width: '80%' }}>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+              </Search>
+            </Box>
+
+            {/* Mobile Logo */}
+            <Link to="/">
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/images/red-logo.svg`}
+                alt="WineTrail Logo"
+                style={{ width: '3.8rem', height: '3.8rem' }}
+              />
+            </Link>
           </Toolbar>
         )}
       </Container>
