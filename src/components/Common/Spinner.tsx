@@ -13,7 +13,7 @@ const Container = styled.div`
 const Spinner = () => {
   return (
     <Container>
-      <BeatLoader size="30" color={COLORS.secondary} />
+      <BeatLoader size="30px" color={COLORS.secondary} />
     </Container>
   );
 };
