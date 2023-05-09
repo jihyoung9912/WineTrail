@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'constants/COLOR';
+import { useSignIn } from 'hooks/useSignIn';
 
 const Container = styled.div`
   width: 350px;
@@ -58,6 +59,7 @@ const SubmitButton = styled.button`
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { isPending, signIn } = useSignIn();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -71,32 +73,43 @@ const SignIn = () => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    signIn({ email, password });
+  };
+
   return (
-    <Container>
-      <form>
-        <SignLabel>Wine-Trail</SignLabel>
-        <Input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={onChange}
-          required
-        />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={onChange}
-          required
-        />
-        <SubmitButton type="submit" onClick={SignIn}>
-          Sign In
-        </SubmitButton>
-      </form>
-      <SubmitButton>Continue with Google</SubmitButton>
-    </Container>
+    <>
+      {isPending ? (
+        'Loading...'
+      ) : (
+        <Container>
+          <form>
+            <SignLabel>Wine-Trail</SignLabel>
+            <Input
+              name="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={onChange}
+              required
+            />
+            <Input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={onChange}
+              required
+            />
+            <SubmitButton type="submit" onClick={handleSubmit}>
+              Sign In
+            </SubmitButton>
+          </form>
+          <SubmitButton>Continue with Google</SubmitButton>
+        </Container>
+      )}
+    </>
   );
 };
 
