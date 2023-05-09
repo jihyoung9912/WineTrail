@@ -16,13 +16,14 @@ import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSignOut } from 'hooks/useSignOut';
+import { useSnackbar } from 'notistack';
 
 const Navbar = () => {
   const { user }: any = useUserContext();
   const { SignOut }: any = useSignOut();
   const windowSize = useWindowSize();
-
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -135,6 +136,7 @@ const Navbar = () => {
                           backgroundColor: '#93487D',
                         },
                       }}
+                      onClick={() => enqueueSnackbar('I love hooks')}
                     >
                       로그인
                     </Button>
