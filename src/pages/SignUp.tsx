@@ -61,7 +61,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
 
-  const { signup } = useSignup();
+  const { isPending, signup } = useSignup();
 
   const SignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,38 +84,44 @@ const SignUp = () => {
   };
 
   return (
-    <Container>
-      <form>
-        <SignLabel>Wine-Trail</SignLabel>
-        <Input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={onChange}
-          required
-        />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={onChange}
-          required
-        />
-        <Input
-          name="displayName"
-          type="text"
-          placeholder="NickName"
-          value={displayName}
-          onChange={onChange}
-          required
-        />
-        <SubmitButton type="submit" onClick={SignUp}>
-          Sign Up
-        </SubmitButton>
-      </form>
-    </Container>
+    <>
+      {isPending ? (
+        'Loading...'
+      ) : (
+        <Container>
+          <form>
+            <SignLabel>Wine-Trail</SignLabel>
+            <Input
+              name="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={onChange}
+              required
+            />
+            <Input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={onChange}
+              required
+            />
+            <Input
+              name="displayName"
+              type="text"
+              placeholder="NickName"
+              value={displayName}
+              onChange={onChange}
+              required
+            />
+            <SubmitButton type="submit" onClick={SignUp}>
+              Sign Up
+            </SubmitButton>
+          </form>
+        </Container>
+      )}
+    </>
   );
 };
 
