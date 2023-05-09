@@ -6,3 +6,4 @@ export { default as EditMyPage } from 'pages/EditMyPage';
 export { default as NotFound } from 'pages/NotFound';
 export { default as Stories } from 'pages/Stories';
 export { default as StoryDetail } from 'pages/StoryDetail';
+export { default as NewStories } from 'pages/NewStories';
