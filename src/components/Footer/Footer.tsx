@@ -1,6 +1,6 @@
-import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { COLORS } from 'constants/COLOR';
 
 const FooterBox = styled.div`
   display: flex;
@@ -10,8 +10,8 @@ const FooterBox = styled.div`
   width: 100%;
   padding: 1rem 3rem;
   margin-top: 1rem;
-  background-color: #e77853;
-  color: #fff;
+  background-color: ${COLORS.primaryBackground};
+  color: ${COLORS.black};
 `;
 
 const FooterMaxContainer = styled.div`
@@ -26,7 +26,7 @@ const FooterTop = styled.div`
   flex-wrap: wrap;
   width: 100%;
   padding: 1rem;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid ${COLORS.secondaryBackground};
 `;
 
 const FooterAddress = styled.div`
@@ -82,11 +82,11 @@ const Footer = () => {
             </Link>
           </FooterInfo>
           <FooterAddress>
-            아빌립서베이 | 국민대학교 | 서울특별시 성북구 정릉로 77 <br />
+            Wine-Trail | 국민대학교 | 서울특별시 성북구 정릉로 77 <br />
             사업자번호: 327-69-00498
           </FooterAddress>
         </FooterTop>
-        <FooterBottom>copyright@IBelieveSurvey</FooterBottom>
+        <FooterBottom>copyright@WINETRAIL</FooterBottom>
       </FooterMaxContainer>
     </FooterBox>
   );
