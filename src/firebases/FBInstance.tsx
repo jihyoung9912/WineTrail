@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore, addDoc, collection } from 'firebase/firestore';
+import { getFirestore, addDoc, collection, getDocs, query, onSnapshot } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -19,3 +19,6 @@ export const firebaseInstance = app;
 export const dbService = getFirestore();
 export const dbAddDoc = addDoc;
 export const dbCollection = collection;
+export const dbGetDoc = getDocs;
+export const dbQuery = query;
+export const dbOnSnapshot = onSnapshot;

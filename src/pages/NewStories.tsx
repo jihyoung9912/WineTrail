@@ -12,7 +12,7 @@ const NewStories = () => {
     });
   };
 
-  const onChange = ({ target: { value } }: any) => {
+  const onChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
     setData(value);
   };
 
