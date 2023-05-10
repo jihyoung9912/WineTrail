@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { DocumentData } from 'firebase/firestore';
 import styled from 'styled-components';
 import WineCard from 'components/Stories/WineCard';
+import { Link } from 'react-router-dom';
 
 interface SnapshotData {
   data: DocumentData;
@@ -17,6 +18,25 @@ const Container = styled.div`
   align-items: flex-start;
   gap: 2rem;
   width: 100%;
+`;
+
+const NewStory = styled.button`
+  position: absolute;
+  top: 100px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: palevioletred;
+  border-radius: 50%;
+`;
+
+const PlustBtn = styled.span`
+  font-size: 4rem;
+  margin-top: 10px;
+  color: white;
 `;
 
 const Stories = () => {
@@ -41,6 +61,11 @@ const Stories = () => {
 
   return (
     <Container>
+      <Link to={'/stories/new'}>
+        <NewStory>
+          <PlustBtn>+</PlustBtn>
+        </NewStory>
+      </Link>
       {wineDatas.map((data) => {
         return <WineCard wineData={data} key={data.id} />;
       })}
