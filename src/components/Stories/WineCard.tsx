@@ -53,7 +53,6 @@ const CreatedAt = styled.div`
 const WineCard = (wineData: DocumentData) => {
   const [satisfaction, setSatisfaction] = useState('');
   const data = wineData.wineData.data;
-  console.log(data);
 
   useEffect(() => {
     setSatisfaction(data?.data?.wineData?.satisfaction);

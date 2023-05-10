@@ -5,6 +5,8 @@ import { DocumentData } from 'firebase/firestore';
 import styled from 'styled-components';
 import WineCard from 'components/Stories/WineCard';
 import { Link } from 'react-router-dom';
+import { useGetFireStore } from 'hooks/useGetFireStore';
+import Spinner from '../Common/Spinner';
 
 interface SnapshotData {
   data: DocumentData;
@@ -40,36 +42,30 @@ const PlusBtn = styled.span`
 `;
 
 const StoryPage = () => {
-  const [wineDatas, setWineDatas] = useState<SnapshotData[]>([]);
+  const query = dbQuery(dbCollection(dbService, 'wineStories'));
+  const { getData, isLoading, datas } = useGetFireStore();
 
   useEffect(() => {
-    const query = dbQuery(dbCollection(dbService, 'wineStories'));
-    const unsubscribe = dbOnSnapshot(query, (dbSnapShot) => {
-      const newWineDatas = dbSnapShot.docs.map((doc) => {
-        return {
-          data: doc.data(),
-          id: doc.id,
-        };
-      });
-      setWineDatas(newWineDatas);
-    });
-
-    return () => {
-      unsubscribe();
-    };
+    getData(query);
   }, []);
 
   return (
-    <Container>
-      <Link to={'/stories/new'}>
-        <NewStory>
-          <PlusBtn>+</PlusBtn>
-        </NewStory>
-      </Link>
-      {wineDatas.map((data) => {
-        return <WineCard wineData={data} key={data.id} />;
-      })}
-    </Container>
+    <>
+      {datas && !isLoading ? (
+        <Container>
+          <Link to={'/stories/new'}>
+            <NewStory>
+              <PlusBtn>+</PlusBtn>
+            </NewStory>
+          </Link>
+          {datas.map((data) => {
+            return <WineCard wineData={data} key={data.id} />;
+          })}
+        </Container>
+      ) : (
+        <Spinner />
+      )}
+    </>
   );
 };
 
