@@ -33,8 +33,6 @@ const UserContextProvider: React.FC<Props> = ({ children }) => {
     });
   }, []);
 
-  console.log('user state : ', state);
-
   return <UserContext.Provider value={{ ...state, dispatch }}>{children}</UserContext.Provider>;
 };
 

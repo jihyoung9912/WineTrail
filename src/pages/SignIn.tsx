@@ -93,10 +93,9 @@ const SignIn = () => {
         navigate('/');
       }
     } catch (error) {
-      enqueueSnackbar(`로그인에 실패했습니다.`, {
+      enqueueSnackbar(`로그인에 실패했습니다.${error}`, {
         variant: 'error',
       });
-      console.log(error);
     }
   };
 

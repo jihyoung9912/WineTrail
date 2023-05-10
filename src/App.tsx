@@ -19,7 +19,7 @@ import Spinner from 'components/Common/Spinner';
 
 const App = () => {
   const { isAuthReady }: any = useUserContext();
-  const [isLoggedIn, setIsLoggedIn] = useState(auth.currentUser);
+  console.log('User:', auth.currentUser);
 
   return (
     <>
@@ -28,7 +28,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
-              <Route path="/" element={<Stories />}></Route>
+              <Route path="/" element={<Home />}></Route>
               <Route path="/signin" element={<SignIn />}></Route>
               <Route path="/signup" element={<SignUp />}></Route>
               <Route path="/mypage" element={<MyPage />}></Route>

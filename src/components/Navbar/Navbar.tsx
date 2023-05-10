@@ -108,7 +108,7 @@ const Navbar = () => {
             </Box>
             {/* PC Components */}
             <Box sx={{ flexGrow: 0, display: 'flex', gap: '15px' }}>
-              <Link to="/">
+              <Link to="/stories">
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
@@ -161,7 +161,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link to="/test">
+                  <Link to="/mypage">
                     <Button
                       onClick={handleCloseNavMenu}
                       sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
@@ -226,7 +226,7 @@ const Navbar = () => {
                   display: 'block',
                 }}
               >
-                <Link to="/">
+                <Link to="/stories">
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">와인 스토리</Typography>
                   </MenuItem>
@@ -247,7 +247,7 @@ const Navbar = () => {
                   </div>
                 ) : (
                   <div>
-                    <Link to="/test">
+                    <Link to="/mypage">
                       <MenuItem onClick={handleCloseNavMenu}>
                         <Typography textAlign="center">마이페이지</Typography>
                       </MenuItem>
