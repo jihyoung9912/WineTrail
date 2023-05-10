@@ -2,6 +2,7 @@ import { dbService, dbAddDoc, dbCollection } from 'firebases/FBInstance';
 import { enqueueSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import format from 'date-fns/format';
 
 export const usePostFireStore = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +12,7 @@ export const usePostFireStore = () => {
     try {
       const docRef = await dbAddDoc(dbCollection(dbService, 'wineStories'), {
         data,
-        createAt: Date.now(),
+        createAt: format(new Date(Date.now()), 'yyyy-MM-dd'),
       });
       navigate('/stories');
       enqueueSnackbar(`스토리 작성이 완료되었습니다.`, {
