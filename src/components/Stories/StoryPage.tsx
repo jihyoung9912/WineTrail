@@ -1,17 +1,11 @@
-import { dbQuery, dbService, dbCollection, dbOnSnapshot } from 'firebases/FBInstance';
-import { useEffect, useState } from 'react';
+import { dbQuery, dbService, dbCollection } from 'firebases/FBInstance';
+import { useEffect } from 'react';
 // eslint-disable-next-line import/named
-import { DocumentData } from 'firebase/firestore';
 import styled from 'styled-components';
-import WineCard from 'components/Stories/WineCard';
 import { Link } from 'react-router-dom';
 import { useGetFireStore } from 'hooks/useGetFireStore';
-import Spinner from '../Common/Spinner';
-
-interface SnapshotData {
-  data: DocumentData;
-  id: string;
-}
+import { Spinner, WineCard } from 'components';
+import { COLORS } from 'constants/COLOR';
 
 const Container = styled.div`
   display: flex;
@@ -25,13 +19,13 @@ const Container = styled.div`
 const NewStory = styled.button`
   position: absolute;
   top: 100px;
-  right: 30px;
+  right: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 3rem;
   height: 3rem;
-  background-color: palevioletred;
+  background-color: ${COLORS.primary};
   border-radius: 50%;
 `;
 
@@ -53,14 +47,14 @@ const StoryPage = () => {
     <>
       {datas && !isLoading ? (
         <Container>
+          {datas.map((data) => {
+            return <WineCard wineData={data} key={data.id} />;
+          })}
           <Link to={'/stories/new'}>
             <NewStory>
               <PlusBtn>+</PlusBtn>
             </NewStory>
           </Link>
-          {datas.map((data) => {
-            return <WineCard wineData={data} key={data.id} />;
-          })}
         </Container>
       ) : (
         <Spinner />

@@ -4,3 +4,4 @@ export { default as Navbar } from 'components/Navbar/Navbar';
 export { default as AddStories } from 'components/NewStories/AddStories';
 export { default as Stories } from 'components/Stories/WineCard';
 export { default as StoryPage } from 'components/Stories/StoryPage';
+export { default as WineCard } from 'components/Stories/WineCard';

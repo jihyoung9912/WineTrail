@@ -4,9 +4,14 @@ import { dbOnSnapshot } from 'firebases/FBInstance';
 import { DocumentData, Query } from 'firebase/firestore';
 import { enqueueSnackbar } from 'notistack';
 
+interface SnapshotData {
+  data: DocumentData;
+  id: string;
+}
+
 export const useGetFireStore = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [datas, setDatas] = useState<any[]>([]);
+  const [datas, setDatas] = useState<SnapshotData[]>([]);
   const getData = async (query: Query<DocumentData>) => {
     setIsLoading(true);
     try {
