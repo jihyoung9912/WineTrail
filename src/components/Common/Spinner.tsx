@@ -7,15 +7,23 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
 `;
 
-const Spinner = () => {
+interface IInit {
+  init: boolean;
+}
+
+const Spinner = ({ init }: IInit) => {
+  console.log(init);
   return (
-    <Container>
+    <Container style={{ height: init ? '100vh' : '100%' }}>
       <BeatLoader size="30px" color={COLORS.secondary} />
     </Container>
   );
+};
+
+Spinner.defaultProps = {
+  init: false,
 };
 
 export default Spinner;

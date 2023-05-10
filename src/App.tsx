@@ -14,7 +14,7 @@ import {
 } from 'pages';
 import GlobalStyles from 'styles/GlobalStyles';
 import { useUserContext } from 'hooks/useUserContext';
-import Spinner from 'components/Common/Spinner';
+import { Spinner } from 'components';
 
 const App = () => {
   const { isAuthReady }: any = useUserContext();
@@ -40,7 +40,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       ) : (
-        <Spinner />
+        <Spinner init={true} />
       )}
     </>
   );
