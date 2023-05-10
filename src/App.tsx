@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { auth } from 'firebases/FBInstance';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from 'layout/layout';

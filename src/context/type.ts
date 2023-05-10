@@ -1,6 +1,6 @@
 import { FieldValue } from 'firebase/firestore';
 
-export type User = {
+export interface User {
   id: string;
   name: string;
   email: string;
@@ -11,4 +11,4 @@ export type User = {
   updatedTimestamp: FieldValue;
   postExams: Array<string>;
   bookmark: Array<string>;
-};
+}
