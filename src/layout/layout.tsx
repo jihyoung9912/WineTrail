@@ -9,6 +9,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  background-color: #ededed;
 `;
 
 const Content = styled.div`

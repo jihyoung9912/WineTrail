@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
-import { marginRight } from 'styled-system';
 
-const FooterBox = styled.div`
+const FooterBox = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   padding: 1rem 3rem;
-  margin-top: 1rem;
   background-color: ${COLORS.primary};
   color: ${COLORS.fontPrimary};
 `;

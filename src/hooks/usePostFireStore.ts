@@ -12,7 +12,7 @@ export const usePostFireStore = () => {
     try {
       const docRef = await dbAddDoc(dbCollection(dbService, 'wineStories'), {
         data,
-        createAt: format(new Date(Date.now()), 'yyyy-MM-dd'),
+        createAt: Date.now(),
       });
       navigate('/stories');
       enqueueSnackbar(`스토리 작성이 완료되었습니다.`, {

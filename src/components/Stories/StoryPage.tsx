@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useGetFireStore } from 'hooks/useGetFireStore';
 import { Spinner, WineCard } from 'components';
 import { COLORS } from 'constants/COLOR';
+import { useUserContext } from 'hooks/useUserContext';
 
 const Container = styled.div`
   display: flex;
@@ -38,6 +39,7 @@ const PlusBtn = styled.span`
 const StoryPage = () => {
   const query = dbQuery(dbCollection(dbService, 'wineStories'));
   const { getData, isLoading, datas } = useGetFireStore();
+  const { user }: any = useUserContext();
 
   useEffect(() => {
     getData(query);
@@ -50,11 +52,15 @@ const StoryPage = () => {
           {datas.map((data) => {
             return <WineCard wineData={data} key={data.id} />;
           })}
-          <Link to={'/stories/new'}>
-            <NewStory>
-              <PlusBtn>+</PlusBtn>
-            </NewStory>
-          </Link>
+          {user ? (
+            <Link to={'/stories/new'}>
+              <NewStory>
+                <PlusBtn>+</PlusBtn>
+              </NewStory>
+            </Link>
+          ) : (
+            <></>
+          )}
         </Container>
       ) : (
         <Spinner />

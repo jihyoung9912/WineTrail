@@ -3,18 +3,26 @@ import styled from 'styled-components';
 // eslint-disable-next-line import/named
 import { DocumentData } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
+import useTimeForToday from 'hooks/useTimeForToday';
 
 const Card = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 23rem;
   height: 10rem;
-  border: 3px solid ${COLORS.primary};
+  border: 2px solid ${COLORS.primary};
   border-radius: 10px;
-  box-shadow: 1px 1px 10px ${COLORS.secondary};
+  box-shadow: 1px 1px 10px ${COLORS.primary};
+  cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    border-color: ${COLORS.secondary};
+    transform: translateY(-5px);
+  }
 `;
 
 const WineImg = styled.img`
+  border-radius: 8px 0 0 8px;
   width: 50%;
   height: 100%;
 `;
@@ -53,6 +61,7 @@ const CreatedAt = styled.div`
 const WineCard = (wineData: DocumentData) => {
   const [satisfaction, setSatisfaction] = useState('');
   const data = wineData.wineData.data;
+  const date = useTimeForToday(data.createAt);
 
   useEffect(() => {
     setSatisfaction(data?.data?.wineData?.satisfaction);
@@ -83,7 +92,7 @@ const WineCard = (wineData: DocumentData) => {
         <WineName>{data?.data?.wineData?.wineName}</WineName>
         <WineVintage>{data?.data?.wineData?.vintage}년</WineVintage>
         <WineSatisfaction>{satisfaction}</WineSatisfaction>
-        <CreatedAt>{data.createAt}</CreatedAt>
+        <CreatedAt>{date}</CreatedAt>
       </WineInfoSection>
     </Card>
   );
